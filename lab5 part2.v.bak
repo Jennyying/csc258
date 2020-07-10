@@ -1,0 +1,26 @@
+module mux4to1(c0, c1, c2, c3, m, n, o, p, q, r, s);
+
+input c0;
+input c1;
+input c2;
+input c3;
+output m;
+output n;
+output o;
+output p;
+output q;
+output r;
+output s;
+
+assign m = ~c3 & c2 & ~c1 & ~c0 |
+~c3 & ~c2 & ~c1 & c0 |
+c3 & c2 & ~c1 & c0 |
+c3 & ~c2 & c1 & c0;
+
+assign n = c3 & c2 & ~c1 & ~c0 |
+~c3 & c2 & ~c1 & c0 |
+c3 & c1 & c0 |
+c2 & c1 & ~c0;
+
+assign o = c3 & c2 & ~c1 & ~c0 |
+c3 & c2 & c1 |
